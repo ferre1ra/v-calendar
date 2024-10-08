@@ -37,6 +37,7 @@
           <CalendarPane v-for="page in pages" :key="page.id" :page="page" />
         </div>
       </Transition>
+      <slot name="timePicker" />
       <slot name="footer" />
     </div>
   </div>
@@ -77,6 +78,7 @@ export default defineComponent({
 .vc-pane-container {
   width: 100%;
   position: relative;
+
   &.in-transition {
     overflow: hidden;
   }
@@ -108,9 +110,11 @@ export default defineComponent({
   width: 28px;
   height: 30px;
   z-index: 1;
+
   &:hover {
     background: var(--vc-header-arrow-hover-bg);
   }
+
   &.vc-disabled {
     opacity: 0.25;
     pointer-events: none;

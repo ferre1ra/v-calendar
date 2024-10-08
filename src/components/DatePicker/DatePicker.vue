@@ -49,9 +49,9 @@ export default defineComponent({
     // Calendar renderer
     const calendar = () => {
       if (!dateParts.value) return null;
-      // Replace footer slot with timePicker if needed
+      // Use timePicker slot if needed
       const renderSlots = isDateTimeMode.value
-        ? { ...slots, footer: timePicker }
+        ? { ...slots, timePicker }
         : slots;
       return h(
         Calendar,
