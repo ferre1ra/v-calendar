@@ -309,20 +309,20 @@ export default defineComponent({
       off(document, 'toggle-popover', onDocumentTogglePopover);
     }
 
-    function beforeEnter(el: HTMLElement) {
+    function beforeEnter(el: Element) {
       emit('before-show', el);
     }
 
-    function afterEnter(el: HTMLElement) {
+    function afterEnter(el: Element) {
       state.force = false;
       emit('after-show', el);
     }
 
-    function beforeLeave(el: HTMLElement) {
+    function beforeLeave(el: Element) {
       emit('before-hide', el);
     }
 
-    function afterLeave(el: HTMLElement) {
+    function afterLeave(el: Element) {
       state.force = false;
       destroyPopper();
       emit('after-hide', el);
@@ -441,6 +441,7 @@ export default defineComponent({
   display: block;
   outline: none;
   z-index: 10;
+
   &:not(.is-interactive) {
     pointer-events: none;
   }
@@ -458,15 +459,19 @@ export default defineComponent({
   outline: none;
   z-index: 10;
   box-shadow: var(--vc-shadow-lg);
+
   &.direction-bottom {
     margin-top: var(--popover-vertical-content-offset);
   }
+
   &.direction-top {
     margin-bottom: var(--popover-vertical-content-offset);
   }
+
   &.direction-left {
     margin-right: var(--popover-horizontal-content-offset);
   }
+
   &.direction-right {
     margin-left: var(--popover-horizontal-content-offset);
   }
@@ -482,69 +487,91 @@ export default defineComponent({
   border-left: inherit;
   background-color: inherit;
   z-index: -1;
+
   &.direction-bottom {
     top: 0;
+
     &.align-left {
       transform: translateY(-50%) rotate(45deg);
     }
+
     &.align-center {
       transform: translateX(-50%) translateY(-50%) rotate(45deg);
     }
+
     &.align-right {
       transform: translateY(-50%) rotate(45deg);
     }
   }
+
   &.direction-top {
     top: 100%;
+
     &.align-left {
       transform: translateY(-50%) rotate(-135deg);
     }
+
     &.align-center {
       transform: translateX(-50%) translateY(-50%) rotate(-135deg);
     }
+
     &.align-right {
       transform: translateY(-50%) rotate(-135deg);
     }
   }
+
   &.direction-left {
     left: 100%;
+
     &.align-top {
       transform: translateX(-50%) rotate(135deg);
     }
+
     &.align-middle {
       transform: translateY(-50%) translateX(-50%) rotate(135deg);
     }
+
     &.align-bottom {
       transform: translateX(-50%) rotate(135deg);
     }
   }
+
   &.direction-right {
     left: 0;
+
     &.align-top {
       transform: translateX(-50%) rotate(-45deg);
     }
+
     &.align-middle {
       transform: translateY(-50%) translateX(-50%) rotate(-45deg);
     }
+
     &.align-bottom {
       transform: translateX(-50%) rotate(-45deg);
     }
   }
+
   &.align-left {
     left: var(--popover-caret-horizontal-offset);
   }
+
   &.align-center {
     left: 50%;
   }
+
   &.align-right {
     right: var(--popover-caret-horizontal-offset);
   }
+
   &.align-top {
     top: var(--popover-caret-vertical-offset);
   }
+
   &.align-middle {
     top: 50%;
   }
+
   &.align-bottom {
     bottom: var(--popover-caret-vertical-offset);
   }
