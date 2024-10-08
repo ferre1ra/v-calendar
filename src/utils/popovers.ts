@@ -9,6 +9,7 @@ export interface PopoverOptions {
   visibility: PopoverVisibility;
   isInteractive: boolean;
   autoHide: boolean;
+  hideOnDayClick: boolean;
   force: boolean;
   target: unknown;
   placement: Placement;
